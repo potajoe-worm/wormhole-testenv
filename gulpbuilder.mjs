@@ -266,16 +266,17 @@ Builder.prototype = {
             var logDone = this.logDone.bind( this );
 
             gulp
-            .src( this._files.js )
-            .on( "end", function(){ logDone( "js" ); } )
-            .pipe( plumber( { errorHandler: this.onError } ) )
-            .pipe( uglify( { preserveComments: false } ).on( "error", this.onError ) )
-            .pipe( replace( /[\t\r\n]+/g, "" ) )
-            .pipe( wrapper( { header: "/* Source: ${filename} */ \r\n" } ) )
-            .pipe( concat( this._outname +".js", { newLine: "\r\n\r\n" } ) )
-            .pipe( header( this.getHeader() ) )
-            .pipe( gulp.dest( this._output +"/js" ) )
-            .pipe( sync.stream() );
+    .src(this._files.js)
+    .on("end", function() { logDone("js"); })
+    .pipe(plumber({ errorHandler: this.onError }))
+    .pipe(uglify().on("error", this.onError)) // Remove { preserveComments: false }
+    .pipe(replace(/[\t\r\n]+/g, ""))
+    .pipe(wrapper({ header: "/* Source: ${filename} */ \r\n" }))
+    .pipe(concat(this._outname + ".js", { newLine: "\r\n\r\n" }))
+    .pipe(header(this.getHeader()))
+    .pipe(gulp.dest(this._output + "/js"))
+    .pipe(sync.stream());
+
         }
     },
 
