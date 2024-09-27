@@ -26,6 +26,9 @@ scene.bundleJs( "./src/js/Nebula.js" );
 scene.bundleJs( "./src/js/Stars.js" );
 scene.bundleJs( "./src/js/Planets.js" );
 scene.bundleJs( "./src/js/Wormhole.js" );
+
+gulp.task("build", gulp.series(scene._buildAll));
+
 // build/watch/serve task
 gulp.task( "initScene", scene.initWatch );
 
