@@ -1,19 +1,20 @@
 /**
  * Dependencies
  */
-var PKG        = require( "./package.json" ),
-    gulp       = require( "gulp" ),
-    plumber    = require( "gulp-plumber" ),
-    sass       = require( "gulp-sass" ),
-    prefix     = require( "gulp-autoprefixer" ),
-    cleancss   = require( "gulp-clean-css" ),
-    uglify     = require( "gulp-uglify" ),
-    replace    = require( "gulp-replace" ),
-    concat     = require( "gulp-concat" ),
-    header     = require( "gulp-header" ),
-    wrapper    = require( "gulp-wrapper" ),
-    watch      = require( "gulp-watch" ),
-    sync       = require( "browser-sync" ).create();
+import PKG from "./package.json" assert { type: "json" };
+import gulp from "gulp";
+import plumber from "gulp-plumber";
+import sass from "gulp-sass";
+import prefix from "gulp-autoprefixer";
+import cleancss from "gulp-clean-css";
+import uglify from "gulp-uglify";
+import replace from "gulp-replace";
+import concat from "gulp-concat";
+import header from "gulp-header";
+import wrapper from "gulp-wrapper";
+import watch from "gulp-watch";
+import sync from "browser-sync";
+
 
 /**
  * Builder class
@@ -314,4 +315,4 @@ Builder.prototype = {
 /**
  * Export
  */
-module.exports = Builder;
+export default Builder;
