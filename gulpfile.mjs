@@ -1,8 +1,9 @@
 /**
  * Dependencies
  */
-var gulp    = require( "gulp" ),
-    Builder = require( "./gulpbuilder.js" );
+import gulp from "gulp";
+import Builder from "./gulpbuilder.mjs";
+
 
 /**
  * ------------------------------------------------------------
