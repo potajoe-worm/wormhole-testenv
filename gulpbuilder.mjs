@@ -4,7 +4,10 @@
 import PKG from "./package.json" assert { type: "json" };
 import gulp from "gulp";
 import plumber from "gulp-plumber";
-import sass from "gulp-sass";
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sassCompiler = gulpSass(dartSass);
+
 import prefix from "gulp-autoprefixer";
 import cleancss from "gulp-clean-css";
 import uglify from "gulp-uglify";
@@ -242,7 +245,7 @@ Builder.prototype = {
             .src( this._files.css )
             .on( "end", function(){ logDone( "css" ); } )
             .pipe( plumber( { errorHandler: this.onError } ) )
-            .pipe( sass().on( "error", this.onError ) )
+            .pipe(sassCompiler().on("error", this.onError))
             .pipe( prefix( { browsers: ["last 2 versions", "> 1%", "opera 12.1", "bb 10", "android 4"] } ) )
             .pipe( cleancss( { advanced: false, keepBreaks: false, keepSpecialComments: false } ) )
             .pipe( replace( /[\t\r\n]+/g, "" ) )
